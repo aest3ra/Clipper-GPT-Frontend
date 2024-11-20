@@ -35,6 +35,7 @@ function EditStep3() {
         videos.forEach((video, index) => {
             const fileExtension = video.file.name.split('.').pop();
             const renamedFile = new File([video.file], `${randUUID}_${title}_${index}.${fileExtension}`, { type: video.file.type });
+            console.log(renamedFile)
             formData.append("videos", renamedFile);
         });
         
@@ -42,9 +43,9 @@ function EditStep3() {
         try {
             const response = await fetch('/api/edit/upload', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
+                // headers: {
+                //     'Content-Type': 'multipart/form-data',
+                // },
                 body: formData,
             });
     
