@@ -33,9 +33,11 @@ function EditStep3() {
         var randUUID = uuid();
     
         videos.forEach((video, index) => {
-            const renamedFile = new File([video.file], randUUID + '_' +`${title}` + '_' + `${index}.mp4`, { type: video.file.type });
+            const fileExtension = video.file.name.split('.').pop();
+            const renamedFile = new File([video.file], `${randUUID}_${title}_${index}.${fileExtension}`, { type: video.file.type });
             formData.append("videos", renamedFile);
         });
+        
     
         try {
             const response = await fetch('/api/edit/upload', {
