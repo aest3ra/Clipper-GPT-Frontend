@@ -43,9 +43,9 @@ function EditStep3() {
         try {
             const response = await fetch('/api/edit/upload', {
                 method: 'POST',
-                // headers: {
-                //     'Content-Type': 'multipart/form-data',
-                // },
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
                 body: formData,
             });
     
